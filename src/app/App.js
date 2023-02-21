@@ -1,56 +1,30 @@
 import React from 'react';
-import logo from '../logo.svg';
-import { Counter } from '../features/counter/Counter';
 import '../App.css';
+import { BrowserRouter as Router,
+  Route,
+  Routes, 
+  NavLink
+} from 'react-router-dom';
+import SearchBar from '../features/search/search';
+import ContentFeed from '../components/content-feed/ContentFeed';
+import NightMode from '../components/night-mode/NightMode';
+import SubredditBar from '../components/subreddit-bar/subreddit-bar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <nav className='nav-bar'>
+        <div>
+          <p>image</p>
+          <p>Breaddit</p>
+        </div>
+        <SearchBar />
+        <NightMode />
+      </nav>
+      <main>
+        <ContentFeed />
+        <SubredditBar />
+      </main>
     </div>
   );
 }

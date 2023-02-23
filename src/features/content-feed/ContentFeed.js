@@ -12,11 +12,11 @@ export default function ContentFeed() {
 
 
     return(
-        <div>
+        <div className="post-container">
             {posts.map(post => (
-                <div key={post.id}>
+                <div key={post.id} className='post-tile'>
                     <h1>{post.title}</h1>
-                    <h4>{post['author_fullname']}</h4>
+                    <h4>{post['author']}</h4>
                     <img src={post['url_overridden_by_dest']} />
                 </div>
             ))}

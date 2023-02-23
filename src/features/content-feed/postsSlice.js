@@ -5,7 +5,7 @@ export const fetchPostsAsyncThunk = createAsyncThunk(
     'posts/fetchPosts',
     async () => {
         const proxyUrl = 'https://jsonp.afeld.me/';
-        const apiUrl = 'https://www.reddit.com/r/popular.json';
+        const apiUrl = 'https://www.reddit.com/r/memes.json';
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -26,6 +26,7 @@ export const postsSlice = createSlice({
             
 
         }],
+        displayedIds: new Set([1]),
         isLoadingPosts: false,
         failedToLoadPosts: false
     },
@@ -39,12 +40,30 @@ export const postsSlice = createSlice({
                 state.isLoadingPosts = false;
                 state.failedToLoadPosts = false;
                 
-                state.posts = action.payload.data.children.map(post => ({
-                    title: post.data.title,
-                    author_fullname: post.data.author_fullname,
-                    id: post.data.id,
-                    url_overridden_by_dest: post.data.url_overridden_by_dest
-                  }));
+                // state.posts = action.payload.data.children.map(post => {
+
+                //    return ({
+                //     title: post.data.title,
+                //     author: post.data.author,
+                //     id: post.data.id,
+                //     url_overridden_by_dest: post.data.url_overridden_by_dest
+                //   })
+                // });
+
+                // || state.displayedIds.has(post.data.id)
+
+                action.payload.data.children.forEach(post => {
+                    if (post.data.post_hint === 'image' ) {
+                      state.posts.push({
+                        title: post.data.title,
+                        author: post.data.author,
+                        id: post.data.id,
+                        url_overridden_by_dest: post.data.url_overridden_by_dest
+                      });
+                     
+                    }
+                  });
+
             })
             .addCase(fetchPostsAsyncThunk.rejected, (state, action) => {
                 state.isLoadingPosts = false;

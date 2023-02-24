@@ -34,13 +34,13 @@
 /* main content feed */
 
 .post-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-right: 240px;
+  display: flex;
+  overflow-x: hidden;
 }
 
 .post-tile {
+  flex: 0 0 250px;
+  margin-right: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -54,8 +54,7 @@
 
 .post-tile h4 {
   margin: 5px 0;
-  font-size: 12px;
-  color:cornflowerblue
+  font-size: 16px;
 }
 
 .post-tile img {
@@ -65,10 +64,68 @@
   margin-top: 10px;
 }
 
+.carousel-button {
+  background-color: #f1f1f1;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* main text content */
+
+.post-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.post-text-tile {
+  width: 50%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 16px;
+  margin-left: 15px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post-text-tile h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.post-text-tile h4 {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #606770;
+}
+
+.post-text-tile p {
+  padding-top: 20px;
+  margin: 5px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1c1e21;
+}
+
+
+
 /* right side nav bar */
 .subreddit-bar {
+  visibility: hidden;
   position: absolute;
-  top: 100px;
+  top: 95px;
   right: 0;
   width: 200px;
   background-color: #f1f1f1;

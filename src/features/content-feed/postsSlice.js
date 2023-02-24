@@ -53,15 +53,16 @@ export const postsSlice = createSlice({
                 // || state.displayedIds.has(post.data.id)
 
                 action.payload.data.children.forEach(post => {
-                    if (post.data.post_hint === 'image' ) {
+
                       state.posts.push({
                         title: post.data.title,
                         author: post.data.author,
                         id: post.data.id,
-                        url_overridden_by_dest: post.data.url_overridden_by_dest
+                        url_overridden_by_dest: post.data.url_overridden_by_dest,
+                        post_hint: post.data.post_hint,
+                        selftext: post.data.selftext
                       });
-                     
-                    }
+
                   });
 
             })

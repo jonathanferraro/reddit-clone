@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchPostsAsyncThunk = createAsyncThunk(
     'posts/fetchPosts',
-    async () => {
+    async (searchTerm) => {
         const proxyUrl = 'https://jsonp.afeld.me/';
-        const apiUrl = 'https://www.reddit.com/r/CallOfDuty.json?limit=100';
+        const apiUrl = `https://www.reddit.com/r/${searchTerm}.json?limit=20`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -39,7 +39,23 @@ export const postsSlice = createSlice({
             .addCase(fetchPostsAsyncThunk.fulfilled, (state, action) => {
                 state.isLoadingPosts = false;
                 state.failedToLoadPosts = false;
-                
+
+
+                action.payload.data.children.forEach(post => {
+                    // !state.displayedIds.has(post.data.id) &&
+                      state.posts.push({
+                        title: post.data.title,
+                        author: post.data.author,
+                        id: post.data.id,
+                        url_overridden_by_dest: post.data.url_overridden_by_dest,
+                        post_hint: post.data.post_hint,
+                        selftext: post.data.selftext
+                      });
+                    // state.displayedIds.add(post.data.id)
+
+                  });
+
+                                  
                 // state.posts = action.payload.data.children.map(post => {
 
                 //    return ({
@@ -51,19 +67,6 @@ export const postsSlice = createSlice({
                 // });
 
                 // || state.displayedIds.has(post.data.id)
-
-                action.payload.data.children.forEach(post => {
-
-                      state.posts.push({
-                        title: post.data.title,
-                        author: post.data.author,
-                        id: post.data.id,
-                        url_overridden_by_dest: post.data.url_overridden_by_dest,
-                        post_hint: post.data.post_hint,
-                        selftext: post.data.selftext
-                      });
-
-                  });
 
             })
             .addCase(fetchPostsAsyncThunk.rejected, (state, action) => {

@@ -5,7 +5,7 @@ import { BrowserRouter as Router,
   Routes, 
   NavLink
 } from 'react-router-dom';
-import SearchBar from '../features/search/search';
+import SearchBar from '../features/search/SearchBar';
 import ContentFeed from '../features/content-feed/ContentFeed';
 import NightMode from '../components/night-mode/NightMode';
 import SubredditBar from '../components/subreddit-bar/subreddit-bar';

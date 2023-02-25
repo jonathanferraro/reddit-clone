@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSearch } from './searchSlice';
 
 export default function SearchBar () {
+    const [searchTerm, setSearchTerm] = useState('')
+    const dispatch = useDispatch();
 
-    const [search, setSearch] = useState('Search')
 
     const handleChange = (e) => {
-        setSearch(e.target.value)
+        setSearchTerm(e.target.value)
     }
 
     const handleFocus = () => {
-        setSearch('')
+        setSearchTerm('')
     }
 
     const onSearchHandler = (e) => {
         e.preventDefault();
-        return {}
+        dispatch(setSearch(searchTerm))
     }
 
     return (
         <div>
             <form onSubmit={onSearchHandler} className='search-form'>
-                <input type='text' className='search'  value={search} onChange={handleChange} onFocus={handleFocus}/>
+                <input type='text' className='search'  value={searchTerm} onChange={handleChange} onFocus={handleFocus}/>
                 <button type='submit' className='search-button'>
                     🔎
                 </button>

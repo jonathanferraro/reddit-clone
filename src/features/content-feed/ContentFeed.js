@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchPostsAsyncThunk } from "./postsSlice";
-
+import { selectSearch } from "../search/searchSlice";
 import TextPost from "./TextPost";
 import ImagePost from "./ImagePost";
+
 
 export default function ContentFeed() {
     const dispatch = useDispatch()
     const posts = useSelector(selectPosts)
+    const searchTerm = useSelector(selectSearch)
 
     useEffect(() => {
-        dispatch(fetchPostsAsyncThunk());
-    }, [dispatch]);
+        dispatch(fetchPostsAsyncThunk(searchTerm));
+    }, [dispatch, searchTerm]);
 
     useEffect(() => {
     // get carousel container and button elements
@@ -42,6 +44,7 @@ export default function ContentFeed() {
     return(
         <div>
             <h1>test test!</h1>
+            <p>{searchTerm}</p>
             <h3>test test test</h3>
             <div className="post-container">
                 {posts.map(post => (

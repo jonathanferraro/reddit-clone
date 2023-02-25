@@ -27,17 +27,20 @@ export const postsSlice = createSlice({
 
         }],
         isLoadingPosts: false,
-        failedToLoadPosts: false
+        failedToLoadPosts: false,
+        isLoaded: false
     },
     extraReducers: builder => {
         builder
             .addCase(fetchPostsAsyncThunk.pending, (state) => {
                 state.isLoadingPosts = true;
                 state.failedToLoadPosts = false;
+                state.isLoaded = false;
             })
             .addCase(fetchPostsAsyncThunk.fulfilled, (state, action) => {
                 state.isLoadingPosts = false;
                 state.failedToLoadPosts = false;
+                state.isLoaded = true;
 
 
                 const subredditName = action.payload.data.children[0].data.subreddit;
@@ -62,12 +65,14 @@ export const postsSlice = createSlice({
             .addCase(fetchPostsAsyncThunk.rejected, (state, action) => {
                 state.isLoadingPosts = false;
                 state.failedToLoadPosts = true;
+                state.isLoaded = false;
                 console.log(action.error.message)
             })
     }
 })
 
 export const selectPosts = (state) => state.posts;
+export const selectIsLoaded = (state) => state.posts.isLoaded;
 export default postsSlice.reducer;
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPosts, fetchPostsAsyncThunk } from "./postsSlice";
+import { selectPosts, fetchPostsAsyncThunk, selectIsLoaded } from "./postsSlice";
 import { selectSearch } from "../search/searchSlice";
 import TextPost from "./TextPost";
 import ImagePost from "./ImagePost";
@@ -10,10 +10,35 @@ export default function ContentFeed() {
     const dispatch = useDispatch()
     const searchTerm = useSelector(selectSearch)
     const posts = useSelector(selectPosts)
+    const isLoaded = useSelector(selectIsLoaded)
 
     useEffect(() => {
         dispatch(fetchPostsAsyncThunk(searchTerm));
     }, [dispatch, searchTerm]);
+
+    useEffect(() => {
+        if (isLoaded) {
+            const carousel = document.querySelector('.post-container');
+          const carouselBtnLeft = document.querySelector('.carousel-button-left');
+          const carouselBtnRight = document.querySelector('.carousel-button-right');
+          const postWidth = carousel.querySelector('.post-tile').offsetWidth;
+      
+          carouselBtnLeft.addEventListener('click', () => {
+            carousel.scrollBy({
+              left: -postWidth,
+              behavior: 'smooth'
+            });
+          });
+      
+          carouselBtnRight.addEventListener('click', () => {
+            carousel.scrollBy({
+              left: postWidth,
+              behavior: 'smooth'
+            });
+          }); 
+        }
+      }, []);
+      
 
 
     const subreddit = posts[searchTerm];

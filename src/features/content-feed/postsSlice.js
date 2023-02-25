@@ -26,7 +26,6 @@ export const postsSlice = createSlice({
             
 
         }],
-        displayedIds: new Set([1]),
         isLoadingPosts: false,
         failedToLoadPosts: false
     },
@@ -41,32 +40,23 @@ export const postsSlice = createSlice({
                 state.failedToLoadPosts = false;
 
 
-                action.payload.data.children.forEach(post => {
-                    // !state.displayedIds.has(post.data.id) &&
-                      state.posts.push({
-                        title: post.data.title,
-                        author: post.data.author,
-                        id: post.data.id,
-                        url_overridden_by_dest: post.data.url_overridden_by_dest,
-                        post_hint: post.data.post_hint,
-                        selftext: post.data.selftext
-                      });
-                    // state.displayedIds.add(post.data.id)
-
-                  });
-
-                                  
-                // state.posts = action.payload.data.children.map(post => {
-
-                //    return ({
-                //     title: post.data.title,
-                //     author: post.data.author,
-                //     id: post.data.id,
-                //     url_overridden_by_dest: post.data.url_overridden_by_dest
-                //   })
-                // });
-
-                // || state.displayedIds.has(post.data.id)
+                const subredditName = action.payload.data.children[0].data.subreddit;
+                const posts = action.payload.data.children.map(post => {
+                  return {
+                    title: post.data.title,
+                    author: post.data.author,
+                    id: post.data.id,
+                    url_overridden_by_dest: post.data.url_overridden_by_dest,
+                    post_hint: post.data.post_hint,
+                    selftext: post.data.selftext
+                  };
+                });
+              
+                // Update state with the new subreddit object
+                state[subredditName] = {
+                  name: subredditName,
+                  posts: posts
+                };
 
             })
             .addCase(fetchPostsAsyncThunk.rejected, (state, action) => {
@@ -77,7 +67,7 @@ export const postsSlice = createSlice({
     }
 })
 
-export const selectPosts = (state) => state.posts.posts;
+export const selectPosts = (state) => state.posts;
 export default postsSlice.reducer;
 
 

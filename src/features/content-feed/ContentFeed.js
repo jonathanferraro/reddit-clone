@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchPostsAsyncThunk } from "./postsSlice";
 
+import TextPost from "./TextPost";
+import ImagePost from "./ImagePost";
+
 export default function ContentFeed() {
     const dispatch = useDispatch()
     const posts = useSelector(selectPosts)
@@ -43,11 +46,12 @@ export default function ContentFeed() {
             <div className="post-container">
                 {posts.map(post => (
                     post.post_hint === 'image' &&
-                    <div key={post.id} className='post-tile'>
-                        <h1>{post.title}</h1>
-                        <img src={post['url_overridden_by_dest']} />
-                        <h4>{post['author']}</h4>
-                    </div>
+                    <ImagePost 
+                    title= {post.title}
+                    author={post.author}
+                    url_overridden_by_dest={post.url_overridden_by_dest}
+                    id={post.id}
+                    />
                 ))}
             </div>
             <button class="carousel-button carousel-button-left">Left</button>
@@ -55,15 +59,14 @@ export default function ContentFeed() {
 
             <div className="post-text-container">
                 {posts.map(post => (
-                        post.post_hint === undefined &&
-                        <div key={post.id} className='post-text-tile'>
-                            <h1>{post.title}</h1>
-                            <h4>{post['author']}</h4>
-                            <p>{post['selftext']}</p>
-                        </div>
+                    post.post_hint === undefined &&
+                    <TextPost 
+                    title={post.title} 
+                    author={post.author} 
+                    selftext={post.selftext} 
+                    id={post.id}/>
                 ))}
             </div>
-            
         </div>
     )
 }

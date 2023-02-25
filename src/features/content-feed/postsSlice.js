@@ -5,7 +5,7 @@ export const fetchPostsAsyncThunk = createAsyncThunk(
     'posts/fetchPosts',
     async () => {
         const proxyUrl = 'https://jsonp.afeld.me/';
-        const apiUrl = 'https://www.reddit.com/r/memes.json';
+        const apiUrl = 'https://www.reddit.com/r/CallOfDuty.json?limit=100';
 
         const response = await fetch(apiUrl);
         const data = await response.json();

@@ -38,7 +38,7 @@ export default function ContentFeed() {
 
     return(
         <div>
-            <p>test</p>
+            <h1>test test</h1>
             <div className="post-container">
                 {posts.map(post => (
                     post.post_hint === 'image' &&

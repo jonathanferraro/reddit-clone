@@ -5,7 +5,7 @@ export const fetchPostsAsyncThunk = createAsyncThunk(
     'posts/fetchPosts',
     async (searchTerm) => {
         const proxyUrl = 'https://jsonp.afeld.me/';
-        const apiUrl = `https://www.reddit.com/r/${searchTerm}.json?limit=20`;
+        const apiUrl = `https://www.reddit.com/r/${searchTerm}.json?limit=75`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -73,6 +73,7 @@ export const postsSlice = createSlice({
 
 export const selectPosts = (state) => state.posts;
 export const selectIsLoaded = (state) => state.posts.isLoaded;
+export const selectIsLoadingPosts = (state) => state.posts.isLoadingPosts;
 export default postsSlice.reducer;
 
 

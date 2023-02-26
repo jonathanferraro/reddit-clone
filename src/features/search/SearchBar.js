@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setSearch } from './searchSlice';
 
 export default function SearchBar () {
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState('/b subreaddit ')
     const dispatch = useDispatch();
 
 

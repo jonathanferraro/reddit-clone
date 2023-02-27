@@ -15,7 +15,9 @@ export default function Comments(props) {
     return (
         <div>
             {comments && comments.map(comment => (
-                <p>{comment}</p>
+                <div className="post-text-comment-tile">
+                    <p className="post-text-comments">{comment}</p>
+                </div>
             ))}
         </div>
     )

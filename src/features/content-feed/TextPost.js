@@ -21,7 +21,7 @@ export default function TextPost(props) {
             <h1>{title}</h1>
             <h4>{author}</h4>
             <p>{selftext}</p>
-            <button onClick={handleClick}>
+            <button className="show-comments-button" onClick={handleClick}>
                 Comments
             </button>
             {showComments && 

@@ -13,6 +13,7 @@ import breadImage from './clipart1357135.png';
 
 function App() {
   return (
+
     <div className="App">
       <nav className='nav-bar'>
         <div className='brand'>
@@ -24,9 +25,9 @@ function App() {
       </nav>
       <main className='wrapper'>
         <ContentFeed />
-        <SubredditBar />
       </main>
     </div>
+
   );
 }
 

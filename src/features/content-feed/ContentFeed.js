@@ -42,7 +42,7 @@ export default function ContentFeed() {
       }, [searchTerm]);
 
     if (isLoading) {
-      return <div>Loading the SubBreaddit</div>
+      return <h2 className="loading-posts"> Loading the SubBreaddit </h2>
     }
       
     return (
@@ -52,7 +52,7 @@ export default function ContentFeed() {
         <div>
           <div className="post-container">
             {subreddit && subreddit.posts.map(post => (
-              post.post_hint === 'image' &&
+              (post.post_hint === 'image' && post.title.length < 40) &&
               <ImagePost 
                 className="post-tile"
                 key={post.id}

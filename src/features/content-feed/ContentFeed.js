@@ -54,7 +54,7 @@ export default function ContentFeed() {
           {subreddit && subreddit.posts.map(post => (
             post.post_hint === 'image' &&
             <ImagePost 
-            className="post-tile"
+              className="post-tile"
               key={post.id}
               title={post.title}
               author={post.author}

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comments from "../comments/Comments";
-import { fetchCommentsAsyncThunk } from "../comments/commentsSlice";
+import { fetchCommentsAsyncThunk} from "../comments/commentsSlice";
 import { selectSearch } from "../search/searchSlice";
 
 export default function TextPost(props) {
     const {title, author, selftext, id} = props;
     const dispatch = useDispatch();
     const [showComments, setShowComments] = useState(false);
-    const subreddit = useSelector(selectSearch)
+    const subreddit = useSelector(selectSearch);
+
 
     const handleClick = () => {
         setShowComments(!showComments)
@@ -26,8 +27,6 @@ export default function TextPost(props) {
             {showComments && 
                 <Comments id={id}/>
             }
-            
-
         </div>
     )
 }

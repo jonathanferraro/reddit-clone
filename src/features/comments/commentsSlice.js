@@ -11,7 +11,6 @@ export const fetchCommentsAsyncThunk = createAsyncThunk(
     }
 );
 
-
 export const commentsSlice = createSlice({
     name: 'comments',
     initialState: {
@@ -19,7 +18,6 @@ export const commentsSlice = createSlice({
             '115': [
                 'cool', 'awesome', 'much wow'
             ]
-
         },
         isLoadingComments: false,
         failedToLoadComments: false
@@ -27,13 +25,13 @@ export const commentsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchCommentsAsyncThunk.pending, (state) => {
-                state.isLoadingPosts = true;
-                state.failedToLoadPosts = false;
+                state.isLoadingComments = true;
+                state.failedToLoadComments = false;
 
             })
             .addCase(fetchCommentsAsyncThunk.fulfilled, (state, action) => {
-                state.isLoadingPosts = false;
-                state.failedToLoadPosts = false;
+                state.isLoadingComments = false;
+                state.failedToLoadComments = false;
 
                 const postId = action.payload[0].data.children[0].data.id;
                 const postComments = action.payload[1].data.children.map(comment => comment.data.body)
@@ -43,8 +41,8 @@ export const commentsSlice = createSlice({
 
             })
             .addCase(fetchCommentsAsyncThunk.rejected, (state) => {
-                state.isLoadingPosts = true;
-                state.failedToLoadPosts = false;
+                state.isLoadingComments = false;
+                state.failedToLoadComments = true;
 
             })
         }

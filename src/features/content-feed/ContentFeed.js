@@ -12,6 +12,7 @@ export default function ContentFeed() {
     const posts = useSelector(selectPosts);
     const isLoaded = useSelector(selectIsLoaded);
     const isLoading = useSelector(selectIsLoadingPosts);
+    const subreddit = posts[searchTerm];
 
     useEffect(() => {
         dispatch(fetchPostsAsyncThunk(searchTerm));
@@ -40,43 +41,53 @@ export default function ContentFeed() {
         }, 3500);
       }, [searchTerm]);
 
-      if (isLoading) {
-        return <div>loading state</div>
-      }
+    if (isLoading) {
+      return <div>Loading the SubBreaddit</div>
+    }
       
-
-
-    const subreddit = posts[searchTerm];
     return (
       <div>
         <h1>b/{searchTerm}</h1>
-        <div className="post-container">
-          {subreddit && subreddit.posts.map(post => (
-            post.post_hint === 'image' &&
-            <ImagePost 
-              className="post-tile"
-              key={post.id}
-              title={post.title}
-              author={post.author}
-              url_overridden_by_dest={post.url_overridden_by_dest}
-              id={post.id}
-            />
-          ))}
-        </div>
-        <button className="carousel-button-left">Left</button>
-        <button className="carousel-button-right">Right</button>
-        <div className="post-text-container">
-          {subreddit && subreddit.posts.map(post => (
-            post.post_hint === undefined &&
-            <TextPost 
-              key={post.id}
-              title={post.title} 
-              author={post.author} 
-              selftext={post.selftext} 
-              id={post.id}
-            />
-          ))}
-        </div>
+        {subreddit ? ( 
+        <div>
+          <div className="post-container">
+            {subreddit && subreddit.posts.map(post => (
+              post.post_hint === 'image' &&
+              <ImagePost 
+                className="post-tile"
+                key={post.id}
+                title={post.title}
+                author={post.author}
+                url_overridden_by_dest={post.url_overridden_by_dest}
+                id={post.id}
+              />
+            ))}
+          </div>
+          <button className="carousel-button-left">Left</button>
+          <button className="carousel-button-right">Right</button>
+          <div className="post-text-container">
+            {subreddit && subreddit.posts.map(post => (
+              post.post_hint === undefined &&
+              <TextPost 
+                key={post.id}
+                title={post.title} 
+                author={post.author} 
+                selftext={post.selftext} 
+                id={post.id}
+              />
+            ))}
+          </div>
+        </div>) : (
+          <div>
+            <h2>Oops... This subBreaddit doesn't exist</h2>
+            <p>SubBreaddits are case sensitive. Please be sure to use correct capitalisation that matches the subreddit and no spaces in your search </p>
+            <p>For Example:</p>
+            <ul>
+              <li>"callofduty"  -&gt;  "CallOfDuty"</li>
+              <li>"Netflix"  -&gt;  "netflix"</li>
+            </ul>
+          </div>
+        )}
       </div>
     );
 }

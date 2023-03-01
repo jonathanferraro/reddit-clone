@@ -23,8 +23,11 @@ function App() {
         <SearchBar />
         <NightMode />
       </nav>
-      <main className='wrapper'>
-        <ContentFeed />
+      <main>
+        <SubredditBar />
+        <div className='wrapper'>
+          <ContentFeed />
+        </div>
       </main>
     </div>
 

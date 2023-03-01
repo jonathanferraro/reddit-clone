@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchCommentsAsyncThunk = createAsyncThunk(
     'comments/fetchComments',
     async ({subreddit, postId}) => {
-        const apiUrl = `https://www.reddit.com/r/${subreddit}/comments/${postId}.json`;
+        const apiUrl = `https://www.reddit.com/r/${subreddit}/comments/${postId}.json?limit=35`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();

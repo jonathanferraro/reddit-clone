@@ -42,7 +42,7 @@ export default function ContentFeed() {
       }, [searchTerm]);
 
     if (isLoading) {
-      return <h2 className="loading-posts"> Loading the SubBreaddit </h2>
+      return <h2 className="loading-posts"> Looking for SubBreaddit... </h2>
     }
       
     return (

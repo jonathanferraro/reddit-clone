@@ -28,7 +28,7 @@
   vertical-align: middle;
   color: #6c564d;
 }
-/* other na v */
+/* other nav */
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -40,6 +40,40 @@
   padding-top: 25px;
   padding-bottom: 25px;
   background-color: #f4ecd8;
+}
+
+/* tablet styles */
+@media screen and (max-width: 768px) {
+  .brand img {
+    height: 25px;
+    margin-right: 5px;
+  }
+  .brand p {
+    font-size: 20px;
+  }
+  .nav-bar {
+    padding: 0 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+/* mobile styles */
+@media screen and (max-width: 480px) {
+  .brand img {
+    height: 20px;
+    margin-right: 5px;
+  }
+  .brand p {
+    font-size: 16px;
+  }
+  .nav-bar {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+  }
 }
 
 /* subreddit-bar */
@@ -83,6 +117,26 @@
 .subreddit-bar button:hover {
   background-color: #6c564d;
   color: #fff;
+}
+
+/* Media query */
+@media screen and (max-width: 1024px) {
+  .subreddit-bar {
+    padding: 10px;
+  }
+  
+  .subreddit-bar h1 {
+    font-size: 20px;
+  }
+  
+  .subreddit-bar ul {
+    flex-wrap: wrap;
+  }
+  
+  .subreddit-bar li {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
 }
 
 /*  */
@@ -146,25 +200,39 @@
 }
 
 
-.show-comments-button {
-  background-color: #f4ecd8;
-  color: #6c564d;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.show-comments-button:hover {
-  background-color: #6c564d;
-  color: #fff;
-}
-
 .loading-posts {
   margin-top: 30px;
   
 }
+
+@media only screen and (max-width: 768px) {
+  .post-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .post-tile {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .post-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .post-tile {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
 
 /* main text content */
 
@@ -205,6 +273,7 @@
   font-size: 16px;
   line-height: 1.5;
   color: #1c1e21;
+  word-wrap: break-word;
 }
 
 .post-text-comment-tile {
@@ -226,6 +295,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
 .show-comments-button:hover {

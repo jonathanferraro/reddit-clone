@@ -1,10 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { BrowserRouter as Router,
-  Route,
-  Routes, 
-  NavLink
-} from 'react-router-dom';
 import SearchBar from '../features/search/SearchBar';
 import ContentFeed from '../features/content-feed/ContentFeed';
 import NightMode from '../components/night-mode/NightMode';

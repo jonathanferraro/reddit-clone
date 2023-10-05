@@ -78,13 +78,23 @@ export default postsSlice.reducer;
 
 
 /* 
+ diagram of state layout -------
 posts:{
-    id: {
-        title: (title of the post),
-        author_fullname: (author of post),
-        post_hint: 'image',
-        url_overridden_by_dest: (link of image),
-        comments: []
+    subreddit name: {
+        name: 'subreddit name',
+        posts: [
+            {
+                title: (title of the post),
+                author: (author of post),
+                id: (id)
+                post_hint: 'image',
+                url_overridden_by_dest: (link of image),
+                selftext: (text of post)
+            },
+            {
+                etc....
+            }
+        ]      
     }
 }
 

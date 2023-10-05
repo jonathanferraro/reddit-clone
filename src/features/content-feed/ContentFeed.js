@@ -65,6 +65,7 @@ export default function ContentFeed() {
           </div>
           <button className="carousel-button-left">Left</button>
           <button className="carousel-button-right">Right</button>
+
           <div className="post-text-container">
             {subreddit && subreddit.posts.map(post => (
               post.post_hint === undefined &&
@@ -77,17 +78,19 @@ export default function ContentFeed() {
               />
             ))}
           </div>
-        </div>) : (
-          <div>
-            <h2>Oops... This subBreaddit doesn't exist</h2>
-            <p>SubBreaddits are case sensitive. Please be sure to use correct capitalisation that matches the subreddit and no spaces in your search </p>
-            <p>For Example:</p>
-            <ul>
-              <li>"callofduty"  -&gt;  "CallOfDuty"</li>
-              <li>"Netflix"  -&gt;  "netflix"</li>
-            </ul>
-          </div>
-        )}
+        </div>) 
+          : 
+          (
+            <div>
+              <h2>Oops... This subBreaddit doesn't exist</h2>
+              <p>SubBreaddits are case sensitive. Please be sure to use correct capitalisation that matches the subreddit and no spaces in your search </p>
+              <p>For Example:</p>
+              <ul>
+                <li>"callofduty"  -&gt;  "CallOfDuty"</li>
+                <li>"Netflix"  -&gt;  "netflix"</li>
+              </ul>
+            </div>
+          )}
       </div>
     );
 }

@@ -18,7 +18,11 @@ export default function TextPost(props) {
 
     return (
         <div className="post-text-tile">
-            <h1>{title}</h1>
+            <div className="post-title">
+                <p className="post-votes">votes</p>
+                <h1>{title}</h1>
+            </div>
+            
             <h4>{author}</h4>
             <p>{selftext}</p>
             <button className="show-comments-button" onClick={handleClick}>

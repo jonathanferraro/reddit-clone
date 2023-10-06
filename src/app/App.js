@@ -11,9 +11,9 @@ function App() {
 
     <div className="App">
       <nav className='nav-bar'>
-        <div className='brand'>
+        <div className='brand flex'>
           <img src={breadImage}/>
-          <p>Breaddit</p>
+          <p className='' >Breaddit</p>
         </div>
         <SearchBar />
         <NightMode />

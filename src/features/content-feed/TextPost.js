@@ -18,9 +18,10 @@ export default function TextPost(props) {
 
     return (
         <div className="post-text-tile">
-            <div className="post-title">
-                <p className="post-votes">votes</p>
-                <h1>{title}</h1>
+            <div className="post-title ">
+                <p className="post-votes  justify-self-start ">votes</p>
+                <h1 className="justify-self-center ">{title}</h1>
+                <p className=" justify-self-end ">Posted 1 hour ago</p>
             </div>
             
             <h4>{author}</h4>

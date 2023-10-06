@@ -67,8 +67,10 @@ export default function ContentFeed() {
           <button className="carousel-button-right">Right</button>
 
           <div className="post-text-container">
-            {subreddit && subreddit.posts.map(post => (
-              post.post_hint === undefined &&
+            <p className="text-red-800">TEstTESTESTESTESTEST</p>
+            {subreddit && subreddit.posts.map(post => 
+            (post.selftext.length > 50) &&
+            (
               <TextPost 
                 key={post.id}
                 title={post.title} 

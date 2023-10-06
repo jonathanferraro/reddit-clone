@@ -49,7 +49,9 @@ export const postsSlice = createSlice({
                     id: post.data.id,
                     url_overridden_by_dest: post.data.url_overridden_by_dest,
                     post_hint: post.data.post_hint,
-                    selftext: post.data.selftext
+                    selftext: post.data.selftext,
+                    // score -> for post upvotes
+                    // created_utc -> for date posted
                   };
                 });
               

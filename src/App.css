@@ -27,6 +27,7 @@
   margin: 0;
   vertical-align: middle;
   color: #6c564d;
+  margin-top: -5px;
 }
 /* other nav */
 .nav-bar {
@@ -244,7 +245,7 @@
 }
 
 .post-text-tile {
-  width: 50%;
+  width: 65%;
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #e1d1c7;
@@ -254,9 +255,17 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.post-title {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr; 
+}
+
 .post-votes {
-  position: absolute;
   
+}
+
+.post-date {
+
 }
 
 .post-text-tile h1 {
@@ -264,6 +273,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #6c564d;
+  max-width: 60%;
 }
 
 .post-text-tile h4 {

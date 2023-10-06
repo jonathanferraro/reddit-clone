@@ -75,7 +75,9 @@ export default function ContentFeed() {
                 key={post.id}
                 title={post.title} 
                 author={post.author} 
-                selftext={post.selftext} 
+                selftext={post.selftext}
+                score={post.score}
+                created_utc={post.created_utc}
                 id={post.id}
               />
             ))}

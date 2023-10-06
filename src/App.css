@@ -258,6 +258,8 @@
 .post-title {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr; 
+  align-items: start;
+
 }
 
 .post-votes {
@@ -273,7 +275,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #6c564d;
-  max-width: 60%;
+
 }
 
 .post-text-tile h4 {
@@ -283,9 +285,7 @@
 }
 
 .post-text-tile p {
-  padding-top: 20px;
   margin: 5px 0;
-  font-size: 16px;
   line-height: 1.5;
   color: #1c1e21;
   word-wrap: break-word;

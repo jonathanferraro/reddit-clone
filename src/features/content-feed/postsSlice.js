@@ -50,8 +50,8 @@ export const postsSlice = createSlice({
                     url_overridden_by_dest: post.data.url_overridden_by_dest,
                     post_hint: post.data.post_hint,
                     selftext: post.data.selftext,
-                    // score -> for post upvotes
-                    // created_utc -> for date posted
+                    score: post.data.score,
+                    created_utc: post.data.created_utc,
                   };
                 });
               

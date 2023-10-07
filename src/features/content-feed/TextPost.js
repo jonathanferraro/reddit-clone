@@ -17,7 +17,7 @@ export default function TextPost(props) {
     }
 
     const convertPostCreatedDate = (date) => {
-        const createdTimestamp = date; // Replace this with the actual "created_utc" value from the Reddit API response
+        const createdTimestamp = date; 
         const nowTimestamp = Math.floor(Date.now() / 1000); // Current Unix timestamp in seconds
 
         const timeDifferenceInSeconds = nowTimestamp - createdTimestamp;
@@ -37,12 +37,23 @@ export default function TextPost(props) {
         }
     }
 
+    const formatScore = (score) => {
+        if (score < 1000) {
+            return String(score) 
+        }
+        let scoreFormated = String((score / 1000).toFixed(1))
+        if (scoreFormated[scoreFormated.length - 1] == '0') {
+            return scoreFormated.slice(0, scoreFormated.length - 2) + 'k'
+        }
+        return scoreFormated + 'k'
+    }
+
     return (
         <div className="post-text-tile">
             <div className="post-title  ">
                 <div className="justify-self-start  flex flex-col">
                     <svg className="hover:text-green-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></g></svg>
-                    <p className="post-votes hover:cursor-default ">{score}</p>
+                    <p className="post-votes hover:cursor-default ">{formatScore(score)}</p>
                     <svg className="hover:text-red-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></svg>
                 </div>
                 <div>

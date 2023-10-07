@@ -16,6 +16,7 @@ export default function Comments(props) {
         <div>
             {comments && comments.map(comment => (
                 <div className="post-text-comment-tile">
+                    <p >CoolUserName123 - 6 hours ago</p>
                     <p className="post-text-comments">{comment}</p>
                 </div>
             ))}

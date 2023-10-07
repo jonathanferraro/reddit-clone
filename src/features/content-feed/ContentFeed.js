@@ -63,11 +63,15 @@ export default function ContentFeed() {
               />
             ))}
           </div>
-          <button className="carousel-button-left">Left</button>
-          <button className="carousel-button-right">Right</button>
+          <div className="flex justify-between">
+            <svg className="carousel-button-left hover:cursor-pointer ml-8 mt-3" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(-90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
+            {/* <button className="carousel-button-left  border-4 rounded-2xl py-1 px-4 mr-4" >Left</button> */}
+            {/* <button className="carousel-button-right border-4 rounded-2xl py-1 px-3 mt-4">Right</button> */}
+            <svg className="carousel-button-right hover:cursor-pointer mr-8 mt-3" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
+          </div>
 
           <div className="post-text-container">
-            <p className="text-red-800">TEstTESTESTESTESTEST</p>
+
             {subreddit && subreddit.posts.map(post => 
             (post.selftext.length > 50) &&
             (
@@ -87,7 +91,7 @@ export default function ContentFeed() {
           (
             <div>
               <h2>Oops... This subBreaddit doesn't exist</h2>
-              <p>SubBreaddits are case sensitive. Please be sure to use correct capitalisation that matches the subreddit and no spaces in your search </p>
+              <p>SubBreaddits are case sensitive. Please be sure to use correct capitalization that matches the subreddit and no spaces in your search </p>
               <p>For Example:</p>
               <ul>
                 <li>"callofduty"  -&gt;  "CallOfDuty"</li>

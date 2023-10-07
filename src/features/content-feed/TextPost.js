@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comments from "../comments/Comments";
-import { fetchCommentsAsyncThunk} from "../comments/commentsSlice";
+import { fetchCommentsAsyncThunk, selectIsLoadingComments} from "../comments/commentsSlice";
 import { selectSearch } from "../search/searchSlice";
 
 export default function TextPost(props) {
@@ -9,11 +9,16 @@ export default function TextPost(props) {
     const dispatch = useDispatch();
     const [showComments, setShowComments] = useState(false);
     const subreddit = useSelector(selectSearch);
+    const isLoadingComments = useSelector(selectIsLoadingComments);
 
 
     const handleClick = () => {
         setShowComments(!showComments)
         dispatch(fetchCommentsAsyncThunk({subreddit: subreddit, postId: id}))
+    }
+
+    const handleShowComments = () => {
+        setShowComments(!showComments)
     }
 
     const convertPostCreatedDate = (date) => {
@@ -67,11 +72,18 @@ export default function TextPost(props) {
             <button className="show-comments-button" onClick={handleClick}>
                 Comments
             </button>
-            {showComments && 
+            {showComments && (
+
+                isLoadingComments ?
+
+                (<div>Loading Comments...</div>)
+                :
                 <div>
-                <Comments id={id}/>
-                <p>test</p>
+                    <Comments id={id}/>
+                    <p className="hover:cursor-pointer" onClick={handleShowComments}>Close Comments</p>
                 </div>
+
+)
             }
         </div>
     )

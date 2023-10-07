@@ -6,11 +6,11 @@ export default function Comments(props) {
     const {id} = props;
     const allComments = useSelector(selectComments)
     const comments = allComments[id]
-    const isLoading = useSelector(selectIsLoadingComments);
+    // const isLoading = useSelector(selectIsLoadingComments);
 
-    if (isLoading) {
-        return <div>Loading Comments...</div>
-    }
+    // if (isLoading) {
+    //     return <div>Loading Comments...</div>
+    // }
 
     const convertPostCreatedDate = (date) => {
         const createdTimestamp = date; 
@@ -37,7 +37,7 @@ export default function Comments(props) {
         <div>
             {comments && comments.map(comment => (
                 <div className="post-text-comment-tile post-text-comments grid pl-4">
-                    <p className="justify-self-start pb-1 underline">{comment.author} - {convertPostCreatedDate(comment.created_utc)}</p>
+                    <p className="justify-self-start pb-1 text-xs">{comment.author} - {convertPostCreatedDate(comment.created_utc)}</p>
                     <p className="justify-self-start text-left">{comment.comment}</p>
                 </div>
             ))}

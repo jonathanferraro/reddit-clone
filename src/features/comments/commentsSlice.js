@@ -34,7 +34,14 @@ export const commentsSlice = createSlice({
                 state.failedToLoadComments = false;
 
                 const postId = action.payload[0].data.children[0].data.id;
-                const postComments = action.payload[1].data.children.map(comment => comment.data.body)
+                const postComments = action.payload[1].data.children.map(comment => {
+                    return {
+                        comment: comment.data.body,
+                        author: comment.data.author,
+                        created_utc: comment.data.created_utc,
+                    }
+                    
+                })
 
 
                 state.comments[postId] = postComments;
@@ -53,3 +60,53 @@ export const selectComments = (state) => state.comments.comments;
 export const selectIsLoadingComments = (state) => state.comments.isLoadingComments;
 
 export default commentsSlice.reducer;
+
+// OG diagram of state layout
+
+/**
+    comments: {
+        comments: {
+            postId: [
+                'comment',
+                'commment',
+                'comment',
+                'etc'
+            ]
+        }
+    }
+
+
+ */
+
+// diagram of state layout
+
+/**
+    comments: {
+        comments: {
+            postId: [
+                {
+                    body: ('comment'),
+                    author: ('author username'),
+                    created_utc: (date posted)
+
+                },
+                 {
+                    body: ('comment'),
+                    author: ('author username'),
+                    created_utc: (date posted)
+
+                },
+                {
+                    body: ('comment'),
+                    author: ('author username'),
+                    created_utc: (date posted)
+
+                },
+                etc....
+
+            ]
+        }
+    }
+
+
+ */

@@ -91,7 +91,9 @@ posts:{
                 id: (id)
                 post_hint: 'image',
                 url_overridden_by_dest: (link of image),
-                selftext: (text of post)
+                selftext: (text of post),
+                score: (score),
+                created_utc: (date the post was published)
             },
             {
                 etc....

@@ -68,7 +68,10 @@ export default function TextPost(props) {
                 Comments
             </button>
             {showComments && 
+                <div>
                 <Comments id={id}/>
+                <p>test</p>
+                </div>
             }
         </div>
     )

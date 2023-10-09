@@ -10,13 +10,15 @@ function App() {
   return (
 
     <div className="App">
-      <nav className='nav-bar'>
-        <div className='brand flex'>
+      <nav className='nav-bar flex items-center'>
+        <div className='flex-shrink-0 brand flex'>
           <img src={breadImage}/>
           <p className='' >Breaddit</p>
         </div>
-        <SearchBar />
-        <NightMode />
+        <div className='flex-grow text-center -ml-14'>
+          <SearchBar/>
+        </div>
+
       </nav>
       <main>
         <SubredditBar />

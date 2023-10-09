@@ -63,10 +63,13 @@ export default function ContentFeed() {
               />
             ))}
           </div>
-          <div className="flex justify-between">
-            <svg className="carousel-button-left hover:cursor-pointer ml-8 mt-3" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(-90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
-            <svg className="carousel-button-right hover:cursor-pointer mr-8 mt-3" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
+          <div className="image-arrows-container flex justify-center mt-2">
+            <div className="image-arrows flex justify-between bg-white border rounded-2xl w-full">
+              <svg className="carousel-button-left hover:cursor-pointer ml-8 mt-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(-90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
+              <svg className="carousel-button-right hover:cursor-pointer mr-8 mt-2 mb-1 " xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 12 12"><g transform="rotate(90 6 6)"><path fill="currentColor" d="M6 10.5a.75.75 0 0 0 .75-.75V3.81l1.97 1.97a.75.75 0 0 0 1.06-1.06L6.53 1.47a.75.75 0 0 0-1.06 0L2.22 4.72a.75.75 0 1 0 1.06 1.06l1.97-1.97v5.94c0 .414.336.75.75.75Z"/></g></svg>
+            </div>
           </div>
+
 
           <div className="post-text-container">
 

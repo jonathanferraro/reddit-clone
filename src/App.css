@@ -35,8 +35,6 @@
 }
 /* other nav */
 .nav-bar {
-  /* display: flex; */
-  /* justify-content: space-between; */
   align-items: center;
   height: 100%;
   padding: 0 20px;
@@ -264,6 +262,13 @@
   max-width: 1100px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .post-text-tile {
+    width: 95%;
+    margin-left: 0;
+  }
+}
+
 .post-title {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr; 
@@ -338,10 +343,18 @@
   color: #6c564d;
 }
 
+@media only screen and (max-width: 1024px) {
+  .search {
+    width: 250px;
+    margin-left: 50px;
+  }
+}
+
 .search:focus {
   outline: none;
   border-bottom: 2px solid #a37d5f;
 }
+
 
 .search-button {
   border: none;

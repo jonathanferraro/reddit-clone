@@ -10,6 +10,8 @@ export default function TextPost(props) {
     const [showComments, setShowComments] = useState(false);
     const subreddit = useSelector(selectSearch);
     const isLoadingComments = useSelector(selectIsLoadingComments);
+    const [votes, setVotes] = useState(score) // up, down, none
+    const [userVote, setUserVote] = useState()
 
 
     const handleClick = () => {
@@ -19,6 +21,28 @@ export default function TextPost(props) {
 
     const handleShowComments = () => {
         setShowComments(!showComments)
+    }
+
+    const handleVoteChange = (newVote) => {
+        if (newVote === 'up' ) {
+            if (userVote === 'up') {
+                setUserVote('none')
+                setVotes(score)
+                return
+            }
+            setUserVote('up')
+            setVotes(score + 1)
+        } else if (newVote === 'down') {
+            if (userVote === 'down') {
+                setUserVote('none')
+                setVotes(score)
+                return
+            }
+            setUserVote('down')
+            setVotes(score - 1)
+        }
+
+
     }
 
     const convertPostCreatedDate = (date) => {
@@ -53,19 +77,23 @@ export default function TextPost(props) {
         return scoreFormated + 'k'
     }
 
+    
+
     return (
         <div className="post-text-tile">
             <div className="post-title  ">
                 <div className="justify-self-start  flex flex-col">
-                    <svg className="hover:text-green-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></g></svg>
-                    <p className="post-votes hover:cursor-default ">{formatScore(score)}</p>
-                    <svg className="hover:text-red-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></svg>
+                    <svg onClick={()=>handleVoteChange('up')}  className= {`hover:text-green-500 cursor-pointer ${ userVote === 'up' ? 'text-green-500' : '' }`} 
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></g></svg>
+                    <p className="post-votes hover:cursor-default ">{formatScore(votes)}</p>
+                    <svg onClick={()=>handleVoteChange('down')}  className={`test123 hover:text-red-500 cursor-pointer ${ userVote === 'down' ? 'text-red-500' : '' }`}
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243L4.908 7h14.184L12 17.243z"/></svg>
                 </div>
-                <div>
-                    <h1 className="justify-self-center pr-5">{title}</h1>
-                    <h4>{author}</h4>
+                <div >
+                    <h1 className="justify-self-center lg:pr-5">{title}</h1>
+{/* small screen*/} <h4>{author}<span className="lg:hidden pl-1">- {convertPostCreatedDate(created_utc)}</span></h4>
                 </div>
-                <p className=" justify-self-end text-sm">Posted {convertPostCreatedDate(created_utc)}</p>
+                <p className=" hidden lg:block justify-self-end text-sm">Posted {convertPostCreatedDate(created_utc)}</p>
             </div>
             
             <p className="pt-4">{selftext}</p>

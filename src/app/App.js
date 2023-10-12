@@ -11,8 +11,8 @@ function App() {
 
     <div className="App">
       <nav className='nav-bar flex items-center'>
-        <div className='flex-shrink-0 brand flex'>
-          <img src={breadImage}/>
+        <div className='flex-shrink-0 brand flex mb-3 lg:mb-0'>
+          <img className='-mt-1 lg:-mt-0' src={breadImage}/>
           <p className='' >Breaddit</p>
         </div>
         <div className='flex-grow text-center -ml-14'>
